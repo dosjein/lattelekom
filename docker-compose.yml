@@ -1,0 +1,13 @@
+version: '2'
+services:
+    web:
+        image: shivergard/docker-webserver
+        ports:
+            - 80:80
+        volumes:
+            - ./web:/var/www
+    heroku:
+        image: shivergard/heroku
+        volumes:
+            - ./web/:/opt
+            - ./storage/logs:/root
