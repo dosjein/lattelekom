@@ -11,3 +11,9 @@ services:
         volumes:
             - ./web/:/opt
             - ./storage/logs:/root
+    mysql:
+        image: mariadb:latest
+        env_file:
+            - ./.mysql.env
+        volumes:
+            - ./storage/mysql:/var/lib/mysql
