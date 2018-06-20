@@ -2,29 +2,42 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
+use Response;
 
-class AuthServiceProvider extends ServiceProvider
+class AppServiceProvider extends ServiceProvider
 {
     /**
-     * The policy mappings for the application.
-     *
-     * @var array
-     */
-    protected $policies = [
-        'App\Model' => 'App\Policies\ModelPolicy',
-    ];
-
-    /**
-     * Register any authentication / authorization services.
+     * Bootstrap any application services.
      *
      * @return void
      */
     public function boot()
     {
-        $this->registerPolicies();
+        Schema::defaultStringLength(191);
 
-        //
+        Response::macro('attachment', function ($content) {
+
+            $headers = [
+                'Content-type'        => 'text/json',
+                'Content-Disposition' => 'attachment; filename="download.json"',
+            ];
+
+            return Response::make($content, 200, $headers);
+
+        });
+    }
+
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        if ($this->app->environment() == 'local') {
+            $this->app->register('Appzcoder\CrudGenerator\CrudGeneratorServiceProvider');
+        }
     }
 }
