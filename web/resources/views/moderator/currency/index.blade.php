@@ -3,17 +3,12 @@
 @section('content')
     <div class="container">
         <div class="row">
-            @include('admin.sidebar')
-
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">Currency</div>
                     <div class="panel-body">
-                        <a href="{{ url('/moderator/currency/create') }}" class="btn btn-success btn-sm" title="Add New Currency">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
-                        </a>
 
-                        {!! Form::open(['method' => 'GET', 'url' => '/moderator/currency', 'class' => 'navbar-form navbar-right', 'role' => 'search'])  !!}
+                        {!! Form::open(['method' => 'GET', 'url' => '/', 'class' => 'navbar-form navbar-right', 'role' => 'search'])  !!}
                         <div class="input-group">
                             <input type="text" class="form-control" name="search" placeholder="Search...">
                             <span class="input-group-btn">
@@ -30,29 +25,16 @@
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>ID</th><th>Message</th><th>Phone</th><th>Person Id</th><th>Actions</th>
+                                        <th>ID</th><th>Currency</th><th>Value</th><th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($currency as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
-                                        <td>{{ $item->message }}</td><td>{{ $item->phone }}</td><td>{{ $item->person_id }}</td>
+                                        <td>{{ $item->currency }}</td><td>{{ $item->price }}</td>
                                         <td>
-                                            <a href="{{ url('/moderator/currency/' . $item->id) }}" title="View Currency"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/moderator/currency/' . $item->id . '/edit') }}" title="Edit Currency"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-                                            {!! Form::open([
-                                                'method'=>'DELETE',
-                                                'url' => ['/moderator/currency', $item->id],
-                                                'style' => 'display:inline'
-                                            ]) !!}
-                                                {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
-                                                        'type' => 'submit',
-                                                        'class' => 'btn btn-danger btn-xs',
-                                                        'title' => 'Delete Currency',
-                                                        'onclick'=>'return confirm("Confirm delete?")'
-                                                )) !!}
-                                            {!! Form::close() !!}
+                                            <a href="{{ url('/view/' . $item->id) }}" title="View Currency"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                         </td>
                                     </tr>
                                 @endforeach

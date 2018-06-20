@@ -11,8 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::resource('moderator/currency', 'Moderator\\CurrencyController');
+Route::get('/', 'Moderator\\CurrencyController@index');
+Route::get('/view/{id}', 'Moderator\\CurrencyController@show');

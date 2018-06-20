@@ -7,9 +7,9 @@
 
             <div class="col-md-9">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Edit Currency #{{ $currency->id }}</div>
+                    <div class="panel-heading">Create New %%modelName%%</div>
                     <div class="panel-body">
-                        <a href="{{ url('/moderator/currency') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/%%routeGroup%%%%viewName%%') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />
                         <br />
 
@@ -21,14 +21,9 @@
                             </ul>
                         @endif
 
-                        {!! Form::model($currency, [
-                            'method' => 'PATCH',
-                            'url' => ['/moderator/currency', $currency->id],
-                            'class' => 'form-horizontal',
-                            'files' => true
-                        ]) !!}
+                        {!! Form::open(['url' => '/%%routeGroup%%%%viewName%%', 'class' => 'form-horizontal', 'files' => true]) !!}
 
-                        @include ('moderator.currency.form', ['submitButtonText' => 'Update'])
+                        @include ('%%viewTemplateDir%%.form')
 
                         {!! Form::close() !!}
 
