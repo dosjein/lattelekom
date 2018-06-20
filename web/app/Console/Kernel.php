@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        /$schedule->command('bank:parser')
+        $schedule->command('bank:parser')
                   ->hourly();
     }
 
