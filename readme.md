@@ -1,4 +1,4 @@
-Uzdevums:
+# Uzdevums:
 
 Jāuztaisa lietojums, kas nolasa valūtu kursus no https://www.bank.lv/ RSS barotnes un attēlo to lietotājam. [OK]
 Nepieciešams cronjob, kas izpildās no konsoles. Tas nolasa ierakstus no RSS barotnes un ieraksta tos savā db. [OK]
