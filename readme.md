@@ -12,7 +12,7 @@ Jāpiegādā viss kods un db daļa arhīvā kopā ar instrukciju, kuru izlasot i
 Ja rodas kādi jautājumi, tad noteikti raksti vai zvani.
 
 
-#Install and Run
+# Install and Run
 [Install Docker](https://docs.docker.com/install/)
 [Install Docker Compose](https://docs.docker.com/compose/install/)
 
